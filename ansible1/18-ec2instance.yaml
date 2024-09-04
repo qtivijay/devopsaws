@@ -9,7 +9,7 @@
     - mysql
     - backend
     - frontend
-    zone: daws81s.online
+    zone: vijaydevops.store
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
