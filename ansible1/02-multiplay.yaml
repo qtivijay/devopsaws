@@ -1,0 +1,5 @@
+- name: multiplay
+  host: web
+  tasks:
+  - name: play01 task01
+    ansible.builtin.debug:
