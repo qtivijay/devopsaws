@@ -2,8 +2,8 @@
   hosts: mysql
   become: yes
   vars:
-    mysql_password: "ExpenseApp@1"
-    mysql_host: "mysql.vijaydevops.store"
+    mysql_password: ExpenseApp@1
+    mysql_host: mysql.vijaydevops.store
   tasks:
   - name: install python lib PyMySQL
     ansible.builtin.pip:
@@ -23,7 +23,7 @@
   
   - name: Connecting to mysql server 
     community.mysql.mysql_info:
-      login_user: root
+      login_user: "root"
       login_password: "{{mysql_password}}"
       login_host: "{{mysql_host}}"
     ignore_errors: true  

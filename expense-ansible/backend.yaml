@@ -1,0 +1,15 @@
+- name: backend server
+  host: backend
+  become: yes
+  tasks:
+  - name: disable default nodejs
+    ansible.builtin.command: dnf module disable nodejs -y
+  - name: Enable nodejs version 20
+    ansible.builtin.command: dnf module disable nodejs:20 -y
+  - name: download nodejs version 20
+    ansible.builtin.package:
+      name: {{item}}
+      state: present
+    loop:
+    - nodejs
+    - mysql
