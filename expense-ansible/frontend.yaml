@@ -1,5 +1,5 @@
 - name: Front end
-  hosts: web
+  hosts: frontend
   become: yes #take sudo access
   tasks:
   - name: install nginx
