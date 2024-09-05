@@ -2,7 +2,7 @@
   hosts: local
   connection: local
   vars:
-    subnet_id: subnet-00b0898fc1fd11e34 # replace with your subnet id
+    subnet_id: "subnet-00b0898fc1fd11e34" # replace with your subnet id
     sg_id: "sg-0bc7f605c01cc2ed2"
     ami_id: "ami-09c813fb71547fc4f"
     instances:
@@ -11,6 +11,11 @@
     - frontend
     zone: vijaydevops.store
   tasks:
+  - name: Install botocare and boto3
+    ansible.builtin.pip:
+      name:
+      - boto3
+      - botocare
   - name: create ec2 instance
     amazon.aws.ec2_instance:
       name: "{{ item }}"
