@@ -1,6 +1,9 @@
 - name: backend server
   hosts: backend
   become: yes
+  vars:
+    mysql_password: ExpenseApp@1
+    mysql_host: mysql.vijaydevops.store
   tasks:
   - name: disable default nodejs
     ansible.builtin.command: dnf module disable nodejs -y
@@ -33,6 +36,11 @@
     ansible.builtin.command: npm install
     args:
       chdir: /app
+  - name: copy backend service
+    ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+
   - name: ansible to install pymysql
     ansible.builtin.pip:
       name:
@@ -43,8 +51,8 @@
   - name: import mysql data
     community.mysql.mysql_db:
       login_user: root
-      login_password: "{{ mysql_root_password }}"
-      login_host: "{{ login_host }}"
+      login_password: "{{ mysql_password }}"
+      login_host: "{{ mysql_host }}"
       target: /app/schema/backend.sql
       name: all
       state: import
