@@ -8,7 +8,7 @@
     ansible.builtin.command: dnf module disable nodejs:20 -y
   - name: download nodejs version 20
     ansible.builtin.package:
-      name: {{item}}
+      name: "{{item}}"
       state: present
     loop:
     - nodejs
