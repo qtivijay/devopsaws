@@ -11,10 +11,11 @@
     - frontend
     zone: vijaydevops.store
   tasks:
-  - name: ansible to install pymysql
+  - name: ansible to install boto3 and botocore
     ansible.builtin.pip:
       name:
-      - PyMySQL
+      - boto3
+      - botocore
       executable: pip3.9
   - name: create ec2 instance
     amazon.aws.ec2_instance:
