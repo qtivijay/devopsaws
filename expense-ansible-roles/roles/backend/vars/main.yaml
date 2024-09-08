@@ -1,3 +1,2 @@
-login_user: root
-login_password: "{{ mysql_password }}"
-login_host: "{{ mysql_host }}"
+mysql_password: ExpenseApp@1
+mysql_host: mysql.vijaydevops.store
