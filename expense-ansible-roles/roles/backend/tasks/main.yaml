@@ -13,7 +13,7 @@
   ansible.builtin.user:
     name: expense
 - name: import task from common role
-  ansibel.builtin.import_role:
+  ansible.builtin.import_role:
     name: common
     tasks_from: app_pre_req
 
