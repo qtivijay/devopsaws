@@ -15,7 +15,7 @@
 - name: import task from common role
   ansible.builtin.import_role:
     name: common
-    tasks_from: app_pre_req
+    tasks_from: app-pre-req
 
 - name: install dependencies
   ansible.builtin.command: npm install
