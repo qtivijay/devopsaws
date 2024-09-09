@@ -1,2 +1,4 @@
 mysql_password: ExpenseApp@1
 mysql_host: mysql.vijaydevops.store
+app_location: /app
+component: backend
