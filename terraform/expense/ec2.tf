@@ -1,7 +1,21 @@
+#requirements
+#################################################################
+#1. create 3 aws servers - ['mysql','backend','frontend']
+#------------------------------------------------------------------
+#2. create 3 aws records -
+# mysql - mysql.vijaydevops.store
+# backend - mysql.vijaydevops.store
+# frontend - vijaydevops.store
+#--------------------------------------------------------------------
+#3. 3 aws instances types
+#   mysql instance - t2.small
+#   backend instance, front instance - t3.micro  
+#--------------------------------------------------------------------
+
 resource "aws_instance" "expense" {
     count= length(var.instance_names)
     ami = data.aws_ami.vijaydevops.id 
-    instance_type = "t3.micro"
+    instance_type = var.instance_names[count.index] == "mysql" ? "t2.small" : "t3.micro"
     vpc_security_group_ids = [aws_security_group.allow_ssh_terraform.id]
     tags = merge(
         var.common_tags, 
