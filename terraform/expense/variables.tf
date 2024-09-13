@@ -16,3 +16,7 @@ variable "zone_id" {
     type = string
     default = "Z07904242N80PGXSVPTJN"
 }
+
+variable "domain_name"{
+    default = "vijaydevops.store"
+}
