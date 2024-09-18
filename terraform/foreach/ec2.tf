@@ -25,15 +25,15 @@ resource "aws_instance" "expense" {
     }
   )
 
-  provisioner "local-exec"{
+  provisioner "local-exec" {
     command = "echo ${self.private_ip} > private_ip.txt"
   }
-  
+
   connection {
-    type = "ssh"
-    user = "ec2-user"
+    type     = "ssh"
+    user     = "ec2-user"
     password = "DevOps321"
-    host = self.public_ip
+    host     = self.public_ip
   }
 
   provisioner "remote-exec" {
@@ -47,7 +47,7 @@ resource "aws_instance" "expense" {
   provisioner "remote-exec" {
     when = destroy
     inline = [
-        "sudo systemctl stop nginx"
+      "sudo systemctl stop nginx"
     ]
   }
 
@@ -65,16 +65,16 @@ resource "aws_security_group" "allow_ssh_terraform" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
-  
+
   #terraform will give us variable with block name
   dynamic "ingress" {
     for_each = var.ingress_values
-    content{
-    from_port        = ingress.value["from_port"]
-    to_port          = ingress.value["to_port"]
-    protocol         = ingress.value["protocol"]
-    cidr_blocks      = ingress.value.cidr_blocks
-    ipv6_cidr_blocks = ["::/0"]
+    content {
+      from_port        = ingress.value["from_port"]
+      to_port          = ingress.value["to_port"]
+      protocol         = ingress.value["protocol"]
+      cidr_blocks      = ingress.value.cidr_blocks
+      ipv6_cidr_blocks = ["::/0"]
     }
   }
 

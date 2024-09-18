@@ -5,11 +5,11 @@ terraform {
       version = "5.66.0"
     }
   }
-  
+
   backend "s3" {
-    bucket = "expense-remote-bucket"
-    key    = "remote-state-demo"
-    region = "us-east-1"
+    bucket         = "expense-remote-bucket"
+    key            = "remote-state-demo"
+    region         = "us-east-1"
     dynamodb_table = "expense-locking"
   }
 
